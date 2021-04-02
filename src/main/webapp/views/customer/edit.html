@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+</head>
+<body>
+<h2>Edit Customer</h2>
+<p>
+    <a th:href="@{/customers}">Back To Customers List</a>
+</p>
+
+<th:block th:if="${message}">
+    <p class="btn-danger" th:text="${message}"></p>
+</th:block>
+
+<div id="form">
+    <form th:action="@{/edit-customer}" th:object="${customer}" method="post">
+        <input th:type="hidden" name="id" th:field="*{id}">
+        <table id="customers">
+            <thread>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                </tr>
+            </thread>
+            <tbody>
+            <tr>
+                <td>
+                    <input type="text" th:field="*{firstName}"/>
+                </td>
+                <td>
+                    <input type="text" th:field="*{lastName}"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <label>
+            <input type="submit" class="btn btn-dark" value="Update Customer"/>
+        </label>
+    </form>
+</div>
+<footer th:replace="/layout ::footer"></footer>
+</body>
+</html>
